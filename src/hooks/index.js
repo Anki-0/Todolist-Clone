@@ -45,3 +45,26 @@ export const useTask = (selectedProjects) => {
 
   return [tasks, archivedTasks];
 };
+
+export const useProjects = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection('projects')
+      .where('userid', '==', 'G3fWPE0hEeTtTiR88DWQ')
+      .orderBy('projectid')
+      .then((snapshot) => {
+        const allProjects = snapshot.doc.map((project) => ({
+          ...project.data(),
+          docID: project.id,
+        }));
+        if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
+          setProjects(allProjects);
+        }
+      });
+  }, [projects]);
+
+  return [projects, setProjects];
+};
