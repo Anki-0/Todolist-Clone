@@ -1,4 +1,6 @@
 import React from 'react';
+import { Tasks } from '../Tasks';
+
 import {
   FaCalendarAlt,
   FaChevronDown,
@@ -36,7 +38,8 @@ export const Sidebar = (props) => {
         <h2>Projects</h2>
       </div>
       <ul className="sidebar__projects">Projects will be here!!</ul>
-      Add projects components here
+      Add projects components here import
+      <Tasks />
     </div>
   );
 };

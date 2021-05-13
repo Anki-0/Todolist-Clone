@@ -1,7 +1,7 @@
-import firebse from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-const firebseConfig = firebse.initializeApp({
+const firebaseConfig = firebase.initializeApp({
   apiKey: 'AIzaSyDVBW9kSYe3dqGVrUnRoK0jZkQp2snzgYk',
   authDomain: 'todo-app-ef949.firebaseapp.com',
   databaseURL: 'https://todo-app-ef949-default-rtdb.firebaseio.com',
@@ -12,4 +12,4 @@ const firebseConfig = firebse.initializeApp({
   measurementId: 'G-FRLYEF96S6',
 });
 
-export { firebseConfig as firebse };
+export { firebaseConfig as firebase };

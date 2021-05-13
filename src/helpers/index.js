@@ -1,5 +1,4 @@
 import { collectedTasks } from '../constants';
 
-export const collectedTasksExits = (selectedProjects) => {
-  collectedTasks.find((task) => task.key === selectedProjects);
-};
+export const collectedTasksExits = (selectedProject) =>
+  collectedTasks.find((task) => task.key === selectedProject);

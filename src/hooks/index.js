@@ -4,46 +4,51 @@ import moment from 'moment';
 import { firebase } from '../firebase';
 import { collectedTasksExits } from '../helpers';
 
-export const useTask = (selectedProjects) => {
+export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
 
   useEffect(() => {
-    let DB = firebase
+    let unsubscribe = firebase
       .firestore()
       .collection('tasks')
-      .where('userid', '==', 'G3fWPE0hEeTtTiR88DWQ ');
+      .where('userid', '==', 'G3fWPE0hEeTtTiR88DWQ');
 
-    DB =
-      selectedProjects && !collectedTasksExits(selectedProjects)
-        ? (DB = DB.where('pojectid', '==', selectedProjects))
-        : selectedProjects === 'TODAY'
-        ? (DB = DB.where('date', '==', moment().format('DD/MM/YYYY')))
-        : DB === 'INBOX' || DB === 0
-        ? (DB = DB.where('date', '==', ''))
-        : DB;
+    unsubscribe =
+      selectedProject && !collectedTasksExits(selectedProject)
+        ? (unsubscribe = unsubscribe.where('projectid', '==', selectedProject))
+        : selectedProject === 'TODAY'
+        ? (unsubscribe = unsubscribe.where(
+            'date',
+            '==',
+            moment().format('DD/MM/YYYY')
+          ))
+        : selectedProject === 'INBOX' || selectedProject === 0
+        ? (unsubscribe = unsubscribe.where('date', '==', ''))
+        : unsubscribe;
 
-    DB = DB.onSnapshot((snapshot) => {
-      const newTasks = snapshot.doc.map((task) => ({
+    unsubscribe = unsubscribe.onSnapshot((snapshot) => {
+      const newTasks = snapshot.docs.map((task) => ({
         id: task.id,
         ...task.data(),
       }));
 
-      setTasks(selectedProjects === 'NEXT_7')
-        ? newTasks.filter(
-            (task) =>
-              moment(task.date, 'DD/MM/YYYY').diff(moment(), 'days') <= 7 &&
-              task.achived !== false
-          )
-        : newTasks.filter((task) => task.achived !== true);
-
-      setArchivedTasks(newTasks.filter((tasks) => tasks.achived !== false));
+      setTasks(
+        selectedProject === 'NEXT_7'
+          ? newTasks.filter(
+              (task) =>
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
+                task.archived !== true
+            )
+          : newTasks.filter((task) => task.archived !== true)
+      );
+      setArchivedTasks(newTasks.filter((task) => task.archived !== false));
     });
 
-    return () => DB();
-  }, [selectedProjects]);
+    return () => unsubscribe();
+  }, [selectedProject]);
 
-  return [tasks, archivedTasks];
+  return { tasks, archivedTasks };
 };
 
 export const useProjects = () => {
@@ -55,16 +60,18 @@ export const useProjects = () => {
       .collection('projects')
       .where('userid', '==', 'G3fWPE0hEeTtTiR88DWQ')
       .orderBy('projectid')
+      .get()
       .then((snapshot) => {
-        const allProjects = snapshot.doc.map((project) => ({
+        const allProjects = snapshot.docs.map((project) => ({
           ...project.data(),
-          docID: project.id,
+          docId: project.id,
         }));
+
         if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
         }
       });
   }, [projects]);
 
-  return [projects, setProjects];
+  return { projects, setProjects };
 };

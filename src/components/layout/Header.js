@@ -5,7 +5,7 @@ export const Header = (props) => {
     <header className="header">
       <nav>
         <div className="logo">
-          <img src="/image/logo.png" alt="todo-logo" />
+          <img src="/images/logo.png" alt="todo-logo" />
         </div>
         <div className="settings">
           <ul>
