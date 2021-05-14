@@ -422,13 +422,13 @@ header {
 
 /* Show Confirm Delete
   ============================================ */
-.project-delete-modal {
+.project__delete-modal {
   position: relative;
 
   &__inner {
     @include box-overlay();
     z-index: 99;
-    width: 200px;
+    width: 200px !important;
     padding: 10px;
     top: 10px;
     right: 0;

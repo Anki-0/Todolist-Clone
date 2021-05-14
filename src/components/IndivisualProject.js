@@ -6,7 +6,7 @@ import { firebase } from '../firebase';
 
 export const IndivisualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
-  const { setSelectedProjects } = useSelectedProjectValue;
+  const { setSelectedProject } = useSelectedProjectValue();
   const { projects, setProjects } = useProjectsValue();
 
   const deleteProject = (docId) => {
@@ -17,7 +17,10 @@ export const IndivisualProject = ({ project }) => {
       .delete()
       .then(() => {
         setProjects([...projects]);
-        setSelectedProjects('INBOX');
+        setSelectedProject('INBOX');
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
   return (

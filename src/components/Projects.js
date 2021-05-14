@@ -7,7 +7,7 @@ export const Projects = ({ activeValue = null }) => {
   const { setSelectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
 
-  console.log('🚗', projects);
+  console.log('🔴Project.js =>', projects);
   return (
     projects &&
     projects.map((project) => (
@@ -16,13 +16,13 @@ export const Projects = ({ activeValue = null }) => {
         data-testid="project-action-parent"
         data-doc-id={project.docId}
         className={
-          active === project.projectId
+          active === project.projectid
             ? 'active sidebar__project'
             : 'sidebar__project'
         }
         onClick={() => {
-          setActive(project.projectId);
-          setSelectedProject(project.projectId);
+          setActive(project.projectid);
+          setSelectedProject(project.projectid);
         }}
       >
         <IndivisualProject project={project} />
