@@ -28,10 +28,16 @@ export const useTasks = (selectedProject) => {
         : unsubscribe;
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {
-      const newTasks = snapshot.docs.map((task) => ({
-        id: task.id,
-        ...task.data(),
-      }));
+      // !Debuging
+      //console.log(snapshot);
+      const newTasks = snapshot.docs.map((task) => {
+        // !Debuging
+        //console.log('🚧 Task ->', task);
+        return {
+          id: task.id,
+          ...task.data(),
+        };
+      });
 
       setTasks(
         selectedProject === 'NEXT_7'

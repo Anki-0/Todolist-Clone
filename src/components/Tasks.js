@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckBox } from './CheckBox';
+// import { CheckBox } from './CheckBox';
 import { useTasks } from '../hooks';
 
 export const Tasks = () => {

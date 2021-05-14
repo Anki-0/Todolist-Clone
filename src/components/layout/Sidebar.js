@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tasks } from '../Tasks';
 
 import {
   FaCalendarAlt,
@@ -39,7 +38,6 @@ export const Sidebar = (props) => {
       </div>
       <ul className="sidebar__projects">Projects will be here!!</ul>
       Add projects components here import
-      <Tasks />
     </div>
   );
 };
