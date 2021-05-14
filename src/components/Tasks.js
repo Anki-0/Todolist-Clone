@@ -7,7 +7,8 @@ export const Tasks = () => {
 
   let projectName = 'TEST';
 
-  console.log(tasks);
+  // !🔴Debuging
+  //console.log(tasks);
 
   return (
     <div className="tasks">
