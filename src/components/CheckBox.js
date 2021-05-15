@@ -5,7 +5,7 @@ export const CheckBox = ({ id }) => {
     firebase.firestore().collection('tasks').doc(id).update({ archived: true });
 
   return (
-    <div className="checkbox__holder" onClick={() => archivedTasks()}>
+    <div className="checkbox-holder" onClick={() => archivedTasks()}>
       <span className="checkbox" />
     </div>
   );

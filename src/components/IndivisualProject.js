@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { FaTrashAlt, FaDotCircle } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
+import { BsDot } from 'react-icons/bs';
 
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { firebase } from '../firebase';
 
 export const IndivisualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
-  const { setSelectedProjects } = useSelectedProjectValue;
+  const { setSelectedProject } = useSelectedProjectValue();
   const { projects, setProjects } = useProjectsValue();
 
   const deleteProject = (docId) => {
@@ -17,13 +18,16 @@ export const IndivisualProject = ({ project }) => {
       .delete()
       .then(() => {
         setProjects([...projects]);
-        setSelectedProjects('INBOX');
+        setSelectedProject('INBOX');
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
   return (
     <>
       <span className="sidebar__dot">
-        <FaDotCircle />
+        <BsDot />
       </span>
       <span className="sidebar__project-name">{project.name}</span>
       <span
