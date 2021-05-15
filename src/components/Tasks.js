@@ -15,11 +15,11 @@ export const Tasks = () => {
 
   if (projects && selectedProject && !collectedTasksExits(selectedProject)) {
     projectName = getTitle(projects, selectedProject).name;
-    console.log('project1', projectName);
+    //console.log('project1', projectName);
   }
   if (collectedTasksExits(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collectedTasks, selectedProject).name;
-    console.log('project2', projectName);
+    //console.log('project2', projectName);
   }
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const Tasks = () => {
   return (
     <div className="tasks">
       <h2 className="project__name">{projectName}</h2>
-      <ul className="task__list">
+      <ul className="tasks__list">
         {tasks.map((task) => (
           <li key={`${task.id}`}>
             <CheckBox id={task.id} />

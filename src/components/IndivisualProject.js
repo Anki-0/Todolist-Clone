@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaTrashAlt, FaDotCircle } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
+import { BsDot } from 'react-icons/bs';
 
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { firebase } from '../firebase';
@@ -26,7 +27,7 @@ export const IndivisualProject = ({ project }) => {
   return (
     <>
       <span className="sidebar__dot">
-        <FaDotCircle />
+        <BsDot />
       </span>
       <span className="sidebar__project-name">{project.name}</span>
       <span

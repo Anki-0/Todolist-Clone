@@ -2,5 +2,6 @@
     "singleQuote": true,
     "tabWidth": 2,
     "endOfLine": "lf",
-    "eslintIntegration": true
+    "eslintIntegration": true,
+    "printWidth": 80
   }
