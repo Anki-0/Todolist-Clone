@@ -4,18 +4,18 @@ import moment from 'moment';
 import { firebase } from '../firebase';
 import { collectedTasksExits } from '../helpers';
 
-function isEqual(project1, project2) {
-  if (project1.length !== project2.length) return false
+const isEqual = (project1, project2) => {
+  if (project1.length !== project2.length) return false;
   else {
-    for(var i = 0; i < project1.length; i++) {
-      if (project1['name'] !== project2['name']) return false
-      if (project1['userid'] !== project2['userid']) return false
-      if (project1['projectid'] !== project2['projectid']) return false
-      if (project1['docId'] !== project2['docId']) return false
+    for (var i = 0; i < project1.length; i++) {
+      if (project1['name'] !== project2['name']) return false;
+      if (project1['userid'] !== project2['userid']) return false;
+      if (project1['projectid'] !== project2['projectid']) return false;
+      if (project1['docId'] !== project2['docId']) return false;
     }
   }
-  return true
-}
+  return true;
+};
 
 export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
@@ -91,7 +91,7 @@ export const useProjects = () => {
           '👍useProject Hook =>',
           allProjects,
           '\n\n\n',
-          projects[0],
+          projects,
           '\n\n\n',
           JSON.stringify(allProjects) === JSON.stringify(projects)
         );
@@ -99,11 +99,11 @@ export const useProjects = () => {
         // if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
         //   setProjects(allProjects);
         // }
-        if (isEqual(allProjects, projects)) {
+        if (!isEqual(allProjects, projects)) {
           setProjects(allProjects);
         }
       });
-  }, []);
+  }, [projects]);
 
   return { projects, setProjects };
 };

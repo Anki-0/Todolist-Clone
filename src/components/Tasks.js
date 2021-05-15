@@ -5,6 +5,7 @@ import { useTasks } from '../hooks';
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { getCollatedTitle, getTitle, collectedTasksExits } from '../helpers';
 import { collectedTasks } from '../constants';
+import { Addtask } from './Addtask';
 
 export const Tasks = () => {
   const { projects } = useProjectsValue();
@@ -32,6 +33,7 @@ export const Tasks = () => {
   return (
     <div className="tasks">
       <h2 className="project__name">{projectName}</h2>
+      <Addtask />
       <ul className="tasks__list">
         {tasks.map((task) => (
           <li key={`${task.id}`}>
