@@ -87,14 +87,7 @@ export const useProjects = () => {
         }));
 
         //!🔴Debuging
-        console.log(
-          '👍useProject Hook =>',
-          allProjects,
-          '\n\n\n',
-          projects,
-          '\n\n\n',
-          JSON.stringify(allProjects) === JSON.stringify(projects)
-        );
+        console.log('👍useProject Hook =>', allProjects, '\n\n\n', projects);
 
         // if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
         //   setProjects(allProjects);

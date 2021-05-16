@@ -28,7 +28,7 @@ export const Tasks = () => {
   });
 
   // !🔴Debuging
-  //console.log(tasks);
+  //console.log(selectedProject);
 
   return (
     <div className="tasks">
