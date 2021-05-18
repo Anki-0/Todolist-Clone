@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { BsTrash } from 'react-icons/bs';
+import { FiAlertCircle } from 'react-icons/fi';
 
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { firebase } from '../firebase';
+import { Backdrop } from './layout';
 
 export const IndivisualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -25,30 +27,39 @@ export const IndivisualProject = ({ project }) => {
   };
   return (
     <>
-      <div className="sidebar__projects--names">
-        <span className="sidebar__dot" />
+      <div>
+        <span className="Sidebar__Projects--dot" />
 
-        <span className="sidebar__projects-name">{project.name}</span>
+        <span className="Sidebar__Projects--name">{project.name}</span>
       </div>
       <span
-        className="sidebar__projects-delete"
+        className="Sidebar__projects-delete"
         onClick={() => setShowConfirm(!showConfirm)}
       >
         <BsTrash />
-        {showConfirm && (
-          <div className="project__delete-modal">
-            <div className="project__delete-modal__inner">
-              <p>Are you sure you want to delete this project</p>
-              <button
-                type="button"
-                onClick={() => deleteProject(project.docId)}
-              >
-                Delete
-              </button>
-              <span onClick={() => setShowConfirm(!showConfirm)}>Cancle</span>
+        <Backdrop show={showConfirm}>
+          {showConfirm && (
+            <div className="project__delete-modal">
+              <div className="alert">
+                <FiAlertCircle />
+              </div>
+              <div className="project__delete-modal__inner">
+                <p>Are you sure you want to delete {project.name}</p>
+                <div className="controles">
+                  <span onClick={() => setShowConfirm(!showConfirm)}>
+                    Cancle
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => deleteProject(project.docId)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </Backdrop>
       </span>
     </>
   );

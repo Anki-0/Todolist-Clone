@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaRegListAlt, FaRegCalendarAlt } from 'react-icons/fa';
+import { FaRegListAlt } from 'react-icons/fa';
+import { BiCalendarAlt } from 'react-icons/bi';
 import moment from 'moment';
 import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
@@ -7,7 +8,6 @@ import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
 
 export const Addtask = ({
-  showAddTaskMain = true,
   showShouldMain = false,
   showQuickAddTask,
   setQucikAddTask,
@@ -16,6 +16,7 @@ export const Addtask = ({
   const [taskDate, setTaskDate] = useState('');
   const [project, setProject] = useState('');
   const [showMain, setShowMain] = useState(showShouldMain);
+  const [showAddTaskMain, setshowAddTaskMain] = useState(true);
   const [showProjectOverlay, setshowProjectOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
 
@@ -67,7 +68,10 @@ export const Addtask = ({
         showAddTaskMain && (
           <div
             className="add-task__shallow"
-            onClick={() => setShowMain(!showMain)}
+            onClick={() => {
+              setShowMain(!showMain);
+              setshowAddTaskMain(!showAddTaskMain);
+            }}
           >
             <span className="add-task__plus">+</span>
             <span className="add-task__text">Add Task</span>
@@ -87,47 +91,63 @@ export const Addtask = ({
             showTaskDate={showTaskDate}
             setShowTaskDate={setShowTaskDate}
           />
-
-          <input
-            type="text"
-            className="add-task__content"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-          />
-          <button className="add-task__submit" onClick={() => addtask()}>
-            Add Task
-          </button>
-
-          {
-            //cancle TAsk
-            !showQuickAddTask && (
+          <div className="editting__area">
+            <div className="input__field">
+              <input
+                type="text"
+                className="add-task__content"
+                placeholder="eg..Conference Wednesday at 15 #Metting"
+                value={task}
+                onChange={(e) => setTask(e.target.value)}
+              />
+            </div>
+            <div className="add__task__extrafield">
               <span
-                className="add-task__cancle"
+                className="add-task__schedule"
                 onClick={() => {
-                  setShowMain(false);
-                  setshowProjectOverlay(false);
+                  setShowTaskDate(!showTaskDate);
                 }}
               >
-                Cancle
+                <BiCalendarAlt /> Schedule
               </span>
-            )
-          }
-          <span
-            className="add-task__project"
-            onClick={() => {
-              setshowProjectOverlay(!showProjectOverlay);
-            }}
-          >
-            <FaRegListAlt />
-          </span>
-          <span
-            className="add-task__date"
-            onClick={() => {
-              setShowTaskDate(!showTaskDate);
-            }}
-          >
-            <FaRegCalendarAlt />
-          </span>
+              <span
+                className="add-task__selectproject"
+                onClick={() => {
+                  setshowProjectOverlay(!showProjectOverlay);
+                }}
+              >
+                <FaRegListAlt /> Select a Project
+              </span>
+            </div>
+          </div>
+
+          <div className="control__action">
+            <button
+              className="add-task__submit"
+              onClick={() => {
+                addtask();
+                setshowAddTaskMain(!showAddTaskMain);
+              }}
+            >
+              Add Task
+            </button>
+
+            {
+              //cancle TAsk
+              !showQuickAddTask && (
+                <span
+                  className="add-task__cancle"
+                  onClick={() => {
+                    setShowMain(false);
+                    setshowProjectOverlay(false);
+                    setshowAddTaskMain(!showAddTaskMain);
+                  }}
+                >
+                  Cancle
+                </span>
+              )
+            }
+          </div>
         </div>
       )}
     </div>

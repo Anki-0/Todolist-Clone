@@ -1,11 +1,11 @@
 import React from 'react';
-import { Tasks } from '../Tasks';
+import { Tasks } from '../../Tasks';
 
-import { Sidebar } from './Sidebar';
+import { Sidebar } from '../Sidebar/Sidebar';
 
 export const Content = (props) => {
   return (
-    <section className="content">
+    <section className="Content">
       <Sidebar />
       <Tasks />
     </section>

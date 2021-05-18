@@ -3,8 +3,7 @@ import { firebase } from '../firebase';
 import { useProjectsValue } from '../context';
 import { generatePushId } from '../helpers';
 
-export const Addproject = ({ shouldShow = false }) => {
-  const [show, setShow] = useState(shouldShow);
+export const Addproject = ({ show, setShow }) => {
   const [projectName, setProjectName] = useState('');
   const { setProjects } = useProjectsValue();
 
@@ -58,20 +57,6 @@ export const Addproject = ({ shouldShow = false }) => {
           </span>
         </div>
       )}
-      <span className="add-project__plus">+</span>
-      <span
-        aria-label="Add Project"
-        data-testid="add-project-action"
-        className="add-project__text"
-        onClick={() => setShow(!show)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') setShow(!show);
-        }}
-        role="button"
-        tabIndex={0}
-      >
-        Add Project
-      </span>
     </div>
   );
 };

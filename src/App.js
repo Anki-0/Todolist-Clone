@@ -1,5 +1,7 @@
-import { Content } from './components/layout/Content';
-import { Header } from './components/layout/Header';
+import './App.scss';
+
+import { Content } from './components/layout';
+import { Header } from './components/layout';
 import { ProjectsProvider, SelectedProjectProvider } from './context';
 
 const App = () => {
