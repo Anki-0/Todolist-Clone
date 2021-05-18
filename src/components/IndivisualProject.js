@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import { BsDot } from 'react-icons/bs';
+import { BsTrash } from 'react-icons/bs';
 
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { firebase } from '../firebase';
@@ -26,15 +25,16 @@ export const IndivisualProject = ({ project }) => {
   };
   return (
     <>
-      <span className="sidebar__dot">
-        <BsDot />
-      </span>
-      <span className="sidebar__project-name">{project.name}</span>
+      <div className="sidebar__projects--names">
+        <span className="sidebar__dot" />
+
+        <span className="sidebar__projects-name">{project.name}</span>
+      </div>
       <span
-        className="sidebar__project-delete"
+        className="sidebar__projects-delete"
         onClick={() => setShowConfirm(!showConfirm)}
       >
-        <FaTrashAlt />
+        <BsTrash />
         {showConfirm && (
           <div className="project__delete-modal">
             <div className="project__delete-modal__inner">

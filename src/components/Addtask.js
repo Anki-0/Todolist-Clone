@@ -4,6 +4,7 @@ import moment from 'moment';
 import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
 import { ProjectOverlay } from './ProjectOverlay';
+import { TaskDate } from './TaskDate';
 
 export const Addtask = ({
   showAddTaskMain = true,
@@ -30,7 +31,7 @@ export const Addtask = ({
       collatedDate = moment().add(7, 'days').format('DD/MM/YYYY');
     }
 
-    console.log(task, '/', collatedDate, '/ /');
+    console.log(task, '/', selectedProject, '/ /');
 
     //*If there is task and projectid then call firebase
     return (
@@ -81,7 +82,11 @@ export const Addtask = ({
 
       {(showMain || showQuickAddTask) && (
         <div className="add-task__main" data-testid="add-task-main">
-          <p>Date Here</p>
+          <TaskDate
+            setTaskDate={setTaskDate}
+            showTaskDate={showTaskDate}
+            setShowTaskDate={setShowTaskDate}
+          />
 
           <input
             type="text"

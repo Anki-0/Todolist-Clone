@@ -5,9 +5,9 @@ import { Sidebar } from './Sidebar';
 
 export const Content = (props) => {
   return (
-    <>
+    <section className="content">
       <Sidebar />
       <Tasks />
-    </>
+    </section>
   );
 };

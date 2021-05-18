@@ -8,7 +8,7 @@ export const ProjectOverlay = ({
 }) => {
   const { projects } = useProjectsValue();
 
-  console.log(projects, showProjectOverlay);
+  //console.log(projects, showProjectOverlay);
   return (
     projects &&
     showProjectOverlay && (

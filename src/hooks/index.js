@@ -45,7 +45,8 @@ export const useTasks = (selectedProject) => {
       //console.log(snapshot);
       const newTasks = snapshot.docs.map((task) => {
         // !Debuging
-        console.log('🚧 Task ->', task);
+        // console.log('🚧 Task ->', task);
+
         return {
           id: task.id,
           ...task.data(),
@@ -87,7 +88,7 @@ export const useProjects = () => {
         }));
 
         //!🔴Debuging
-        console.log('👍useProject Hook =>', allProjects, '\n\n\n', projects);
+        //console.log('👍useProject Hook =>', allProjects, '\n\n\n', projects);
 
         // if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
         //   setProjects(allProjects);

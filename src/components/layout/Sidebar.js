@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BsPlus } from 'react-icons/bs';
 
 import {
   FaCalendarAlt,
@@ -59,16 +60,21 @@ export const Sidebar = (props) => {
           <span>Next 7 Days</span>
         </li>
       </ul>
-      <div
-        className="sidebar__middle"
-        onClick={() => setShowProjects(!showProjects)}
-      >
-        <span>
-          <FaChevronDown
-            className={!showProjects ? 'hidden-projects' : undefined}
-          />
+      <div className="sidebar__middle">
+        <div>
+          <span
+            className="arrow__down"
+            onClick={() => setShowProjects(!showProjects)}
+          >
+            <FaChevronDown
+              className={!showProjects ? 'hidden-projects' : undefined}
+            />
+          </span>
+          <h2 onClick={() => setShowProjects(!showProjects)}>Projects</h2>
+        </div>
+        <span className="plus--icon">
+          <BsPlus />
         </span>
-        <h2>Projects</h2>
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       {showProjects && <Addproject />}

@@ -4,10 +4,10 @@ import { IndivisualProject } from './IndivisualProject';
 
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue);
-  const { SelectedProject, setSelectedProject } = useSelectedProjectValue();
+  const { setSelectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
 
-  console.log('🔴Project.js =>', projects);
+  //console.log('🔴Project.js =>', projects);
   return (
     projects &&
     projects.map((project) => (

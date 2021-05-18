@@ -1,21 +1,25 @@
-import { FaMoon } from 'react-icons/fa';
+import { BsBell, BsPlusCircle, BsQuestionCircle } from 'react-icons/bs';
 
-export const Header = (props) => {
-  return (
-    <header className="header">
-      <nav>
-        <div className="logo">
-          <img src="/images/logo.png" alt="todo-logo" />
-        </div>
-        <div className="settings">
-          <ul>
-            <li>+</li>
-            <li>
-              <FaMoon />
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-  );
-};
+export const Header = (props) => (
+  <header className="header">
+    <nav className="">
+      <div className="logo">
+        <img src="/images/logo.png" alt="todo-logo" />
+      </div>
+
+      <div className="settings">
+        <ul className="">
+          <li className="">
+            <BsPlusCircle />
+          </li>
+          <li className=" ">
+            <BsQuestionCircle />
+          </li>
+          <li className="">
+            <BsBell />
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+);

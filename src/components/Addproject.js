@@ -22,7 +22,7 @@ export const Addproject = ({ shouldShow = false }) => {
           setShow(false);
         });
   };
-  console.log(show);
+  //console.log(show);
   return (
     <div className="add-project" data-testid="add-project">
       {show && (

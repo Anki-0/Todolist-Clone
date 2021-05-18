@@ -33,7 +33,7 @@ export const Tasks = () => {
   return (
     <div className="tasks">
       <h2 className="project__name">{projectName}</h2>
-      <Addtask />
+
       <ul className="tasks__list">
         {tasks.map((task) => (
           <li key={`${task.id}`}>
@@ -42,6 +42,7 @@ export const Tasks = () => {
           </li>
         ))}
       </ul>
+      <Addtask />
     </div>
   );
 };
