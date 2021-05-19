@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { firebase } from '../firebase';
-import { useProjectsValue } from '../context';
-import { generatePushId } from '../helpers';
+import { firebase } from '../../firebase';
+import { useProjectsValue } from '../../context';
+import { generatePushId } from '../../helpers';
 
 export const Addproject = ({ show, setShow }) => {
   const [projectName, setProjectName] = useState('');

@@ -10,7 +10,7 @@ export const Header = (props) => (
       <div className="Settings">
         <ul className="Settings__lists">
           <li className="Settings__list">
-            <BsPlus />
+            <BsPlus className="plus--icon" />
           </li>
           <li className="Settings__list">
             <BsQuestionCircle />

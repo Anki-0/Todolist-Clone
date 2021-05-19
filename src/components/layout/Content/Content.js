@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tasks } from '../../Tasks';
+import { Tasks } from '../../Task/Tasks';
 
 import { Sidebar } from '../Sidebar/Sidebar';
 

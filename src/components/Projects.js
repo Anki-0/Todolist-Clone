@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
-import { IndivisualProject } from './IndivisualProject';
+import { IndivisualProject } from '../components/Task/IndivisualProject';
 
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue);

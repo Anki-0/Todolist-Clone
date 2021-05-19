@@ -3,7 +3,7 @@ import { BsCalendar, BsInbox, BsPlus } from 'react-icons/bs';
 
 import { FaChevronDown, FaRegCalendarCheck } from 'react-icons/fa';
 import { useSelectedProjectValue } from '../../../context';
-import { Addproject } from '../../Addproject';
+import { Addproject } from '../../Task/Addproject';
 
 import { Projects } from '../../Projects';
 
@@ -65,7 +65,7 @@ export const Sidebar = (props) => {
           <span>
             <BsCalendar />
           </span>
-          <span>Next 7 Days</span>
+          <span>Upcoming</span>
         </li>
       </ul>
       <div className="Sidebar__middle">

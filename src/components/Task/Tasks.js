@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { CheckBox } from './CheckBox';
-import { useTasks } from '../hooks';
-import { useProjectsValue, useSelectedProjectValue } from '../context';
-import { getCollatedTitle, getTitle, collectedTasksExits } from '../helpers';
-import { collectedTasks } from '../constants';
+import { CheckBox } from '../CheckBox';
+import { useTasks } from '../../hooks';
+import { useProjectsValue, useSelectedProjectValue } from '../../context';
+import { getCollatedTitle, getTitle, collectedTasksExits } from '../../helpers';
+import { collectedTasks } from '../../constants';
 import { Addtask } from './Addtask';
 import { BiComment } from 'react-icons/bi';
 import { RiUserShared2Line } from 'react-icons/ri';
